@@ -5,6 +5,7 @@ services:
     image: ci-tool-stack/gitlab-ce:${VERSION:-latest}
     build:
       context: .
+      dockerfile: Dockerfile.${VERSION:-latest}
       args:
         - http_proxy=$http_proxy
         - https_proxy=$https_proxy
