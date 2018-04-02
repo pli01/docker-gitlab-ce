@@ -1,7 +1,7 @@
 #
 PACKAGENAME ?= docker-gitlab-ce
 IMAGE_NAME ?= ci-tool-stack/gitlab-ce
-VERSION ?= latest
+VERSION ?= $(shell [ -f VERSION ] && cat VERSION)
 
 project ?=
 env ?= # dev
@@ -20,7 +20,7 @@ config:
 
 .PHONY: build
 prepare:
-	if [ ! -f Dockerfile.template ] ; then cp Dockerfile Dockerfile.template ; fi
+	cp Dockerfile Dockerfile.template
 	sed -e 's|\(FROM .*\):\(.*\)|\1:$(VERSION)|' Dockerfile.template > Dockerfile.$(VERSION)
 build: prepare config
 	$(sudo) VERSION=$(VERSION) docker-compose $(compose_args) build
