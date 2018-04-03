@@ -2,9 +2,10 @@
 set -x
 
 image_name=${1:? $(basename $0) IMAGE_NAME VERSION needed}
-version=${2:-latest}
+VERSION=${2:-latest}
 namespace=gitlab-ce
 test_service=gitlab
+export VERSION
 
 ret=0
 echo "Check tests/docker-compose.yml config"
