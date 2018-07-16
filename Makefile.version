@@ -1,0 +1,3 @@
+#
+PACKAGENAME ?= docker-gitlab-ce
+IMAGE_NAME ?= ci-tool-stack/gitlab-ce
